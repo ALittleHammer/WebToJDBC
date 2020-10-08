@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="./jquery-1.7.2.js"></script>
+    <script>
+        $(function () {
+            $("#btn01").click(function () {
+                $.ajax({
+                    url:"http://localhost:8080/web_war_exploded2/LoginServlet",
+                    // data:"action=jQueryAjax",
+                    async: false,
+                    data:{
+                        "username":$("input[id='username']").val(),
+                        "password":$("input[id='password']").val()
+                    },
+                    type:"GET",
+                    success:function (data) {
+                        // alert("服务器返回的数据是：" + data);
+                        // var jsonObj = JSON.parse(data);
+                        alert("登录成功，您的工资为：" + data);
+                    },
+                    dataType : "json"
+                });
+            })
+
+        })
+    </script>
+</head>
+<body>
+    <span>用户名：</span><input type="text" name="username" id="username" />
+    <span>密码：</span><input type="text" name="password" id="password" />
+<br>
+
+<input type="button" id="btn01" value="提交">
+</body>
+</html>
